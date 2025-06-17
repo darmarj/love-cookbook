@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LÖVE Cookbook | Reading errors</title>
+
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading errors</title>
+<meta name="title" content="Reading errors">
+<meta name="author" content="josh">
+<meta name="description" content="Running into errors in your code is an inevitable part of the process and it's important to understand how to read them effectively.">
+<meta name="generator" content="eleventy">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://diminim.github.io/love-cookbook/guides/love/reading-errors/">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Reading errors">
+<meta property="og:description" content="Running into errors in your code is an inevitable part of the process and it's important to understand how to read them effectively.">
+<meta property="og:image" content="https://diminim.github.io/love-cookbook/assets/logo.png">
+<meta property="og:image:alt" content="LÖVE Cookbook">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://diminim.github.io/love-cookbook/guides/love/reading-errors/">
+<meta name="twitter:title" content="Reading errors">
+<meta name="twitter:description" content="Running into errors in your code is an inevitable part of the process and it's important to understand how to read them effectively.">
+<meta name="twitter:image" content="https://diminim.github.io/love-cookbook/assets/logo.png">
+<meta name="twitter:image:alt" content="LÖVE Cookbook">
+<link rel="canonical" href="https://diminim.github.io/love-cookbook/guides/love/reading-errors/">
+
+    <script src="/love-cookbook/assets/js/codeblock.js"></script>
+    <script src="/love-cookbook/assets/js/hover_preview.js"></script>
+    <script src="/love-cookbook/assets/js/mobile.js"></script>
+
+    <link rel="stylesheet" href="/love-cookbook/assets/styles/fonts.css">
+    <link rel="stylesheet" href="/love-cookbook/assets/styles/main.css">
+    <link rel="stylesheet" href="/love-cookbook/assets/styles/prism.css">
+    <link rel="stylesheet" href="/love-cookbook/assets/styles/markdown.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" rel="stylesheet">
+  </head>
+  <body>
+    <div class="sidebar">
+      <header>
+        <a href="/love-cookbook/">
+            <div class="logo">
+                <img class="logo-unhover-img" src="/love-cookbook/assets/logo.png">
+                <img class="logo-hover-img" src="/love-cookbook/assets/logo_hover.png">
+            </div>
+
+            <h1>LÖVE Cookbook</h1>
+        </a>
+      </header>
+
+      <nav class="table-of-contents">
+        <ul class="chapters"><li class="group-header"><ul class="guides"><li><a class="" href="/love-cookbook/guides/getting-started/">Getting started</a>
+                  </li><li><a class="" href="/love-cookbook/guides/fiddle/">Fiddle</a>
+                  </li></ul>
+
+            </li><li class="group-header">Installation<ul class="guides"><li><a class="" href="/love-cookbook/guides/installation/love/">LÖVE</a>
+                  </li><li><a class="" href="/love-cookbook/guides/installation/vscode/">VSCode</a>
+                  </li><li><a class="" href="/love-cookbook/guides/installation/neovim/">Neovim</a>
+                  </li></ul>
+
+            </li><li class="group-header">Lua Basics<ul class="guides"><li><a class="" href="/love-cookbook/guides/lua-basics/lua/">Lua</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-basics/variables/">Variables</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-basics/functions/">Functions</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-basics/if-statements/">If-statements</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-basics/tables/">Tables and for-loops</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-basics/gotchas/">Gotchas</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-basics/recap/">Recap</a>
+                  </li></ul>
+
+            </li><li class="group-header">Lua Intermediate<ul class="guides"><li><a class="" href="/love-cookbook/guides/lua-intermediate/require/">Require</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/scope/">Scope</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/modulo/">Modulo</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/nested-for-loops/">Nested for-loops</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/standard-library/">Standard library</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/string-patterns/">String patterns</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/ternary-operators/">Ternary operators</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/metatables/">Metatables</a>
+                  </li></ul>
+
+            </li><li class="group-header">LÖVE Basics<ul class="guides"><li><a class="" href="/love-cookbook/guides/love/drawing-image/">Drawing an image</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/drawing-shapes/">Drawing shapes</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/playing-audio/">Playing audio</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/input/">Input</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/filesystem/">Filesystem</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/deltatime/">Deltatime</a>
+                  </li><li><a class="active" href="/love-cookbook/guides/love/reading-errors/">Reading errors</a>
+                  </li></ul>
+
+            </li><li class="group-header">Basics<ul class="guides"><li><a class="" href="/love-cookbook/guides/basic/aabb/">AABB</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/angle-and-distance/">Angle &amp; distance</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/tiles/">Tiles</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/animation/">Animation</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/saving-and-loading/">Saving &amp; loading</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/canvases/">Canvases</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/stencil-modes/">Stencil modes</a>
+                  </li></ul>
+
+            </li><li class="group-header">Intermediate<ul class="guides"><li><a class="" href="/love-cookbook/guides/intermediate/oop/">OOP</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/collision-resolving/">Collision resolution</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/stencil-states/">Stencil states</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/coroutines/">Coroutines</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/shaders/">Shaders</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/compute-shaders/">Compute Shaders</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/box-blur/">Box Blur</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/outlines/">Outlines</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/palette/">Palette</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/pixelation/">Pixelation</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/vertex-shaders/">Vertex Shaders</a>
+                  </li></ul>
+
+            </li><li class="group-header">Advanced<ul class="guides"><li><a class="" href="/love-cookbook/guides/advanced/physics/">Physics</a>
+                  </li><li><a class="" href="/love-cookbook/guides/advanced/threads/">Threads</a>
+                  </li></ul>
+
+            </li></ul>
+
+      </nav>
+    </div>
+
+    <main>
+      <article class="guide">
+        
+<header class="guide-header">
+  <button type="button" class="menu-button">
+    <i class="material-symbols-outlined">menu</i>
+  </button>
+
+  <h1 class="title">Reading errors</h1>
+</header>
+
+<p>Running into errors in your code is an inevitable part of the process and it's important to understand how to read them effectively.</p>
+<h2 id="example" tabindex="-1">Example <a class="anchor" href="#example">#</a></h2>
+<p>Let's do something silly to generate an error on purpose:</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">function</span> love<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    love<span class="token punctuation">.</span>graphics<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">100</span> <span class="token operator">*</span> <span class="token string">"test"</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+</code></pre>
+<p>Running the above code will present you with a nice error message that looks like this:</p>
+<p><img src="/love-cookbook/assets/img/reading-errors/error.png" alt=""></p>
+<h2 id="error-message-breakdown" tabindex="-1">Error message breakdown <a class="anchor" href="#error-message-breakdown">#</a></h2>
+<p>Let's quickly break down what this means before your eyes glaze over and you close the window without reading it - a common beginner pitfall.</p>
+<p>The most important part is at the very beginning of the second line. <code>main.lua:2</code> means that the error was thrown in the file <code>main.lua</code> on line 2. This is always a good place to start and will usually be where you will have to correct your code in order to resolve the issue. The rest of the line is telling us what the error actually was.</p>
+<ul>
+<li><code>main.lua</code> - the file</li>
+<li><code>:2</code> - line 2</li>
+<li><code>attempt to perform arithmetic on a string value</code> - the error message</li>
+</ul>
+<p>In this case we know the issue is that we're attempting to multiply the number 100 by a string (&quot;test&quot;) on line 2 which makes absolutely no sense and LÖVE is right to complain.</p>
+<h2 id="less-obvious-errors" tabindex="-1">Less obvious errors <a class="anchor" href="#less-obvious-errors">#</a></h2>
+<p>This code will throw a different kind of error:</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> image <span class="token operator">=</span> love<span class="token punctuation">.</span>graphics<span class="token punctuation">.</span><span class="token function">newImage</span><span class="token punctuation">(</span><span class="token string">"assets/whale.png"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">function</span> love<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    love<span class="token punctuation">.</span>graphics<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span>picture<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+</code></pre>
+<p><img src="/love-cookbook/assets/img/reading-errors/error_drawable_expected.png" alt=""></p>
+<p>Here the error is on line 4. Bad argument #1 to 'draw' is referring to the first argument (<code>picture</code>) in the <a href="https://love2d.org/wiki/love.graphics.draw" target="_blank"><code>love.graphics.draw</code></a> call. LÖVE is saying it was expecting a <a href="https://love2d.org/wiki/Drawable" target="_blank"><code>Drawable</code></a> as the first argument but we gave it <code>nil</code> (or nothing). Of course in this case we did give it <em>something</em> so why are we getting this error?</p>
+<p>A close look at the <code>picture</code> variable we're passing through makes it clear that we didn't actually define it anywhere. Instead we meant to pass the <code>image</code> variable!</p>
+<pre><code class="language-lua"><span data-attrs="4"></span><span class="token keyword">local</span> image <span class="token operator">=</span> love<span class="token punctuation">.</span>graphics<span class="token punctuation">.</span><span class="token function">newImage</span><span class="token punctuation">(</span><span class="token string">"assets/whale.png"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">function</span> love<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    love<span class="token punctuation">.</span>graphics<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span>image<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+</code></pre>
+<p>Changing that line to instead pass through <code>image</code> and rerunning the code shows us a lovely picture of a whale instead of an error.</p>
+<iframe class="love-embed" id="love-iframe-314" src="/love-cookbook/assets/love/love-js" width="800" height="600"></iframe>
+<script>
+const iframe_314 = document.getElementById('love-iframe-314');
+iframe_314.addEventListener('load', function() {
+iframe_314.contentWindow.postMessage({lua: `love.window.setMode(800, 600) 
+local image = love.graphics.newImage("assets/whale.png")
+function love.draw()
+ love.graphics.draw(image, 100, 100)
+end
+`}, '*');
+});
+</script>
+<p>Hopefully you can see how even in a much bigger file or project you can quickly track down the source of an error and solve it.</p>
+<h2 id="traceback" tabindex="-1">Traceback <a class="anchor" href="#traceback">#</a></h2>
+<p>What if the line the error message points you to isn't helpful? In the code below we're intentionally throwing an error on line 5 with an <code>assert</code> if a passed parameter is nil and that's indeed the line our error message is pointing to.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> image <span class="token operator">=</span> love<span class="token punctuation">.</span>graphics<span class="token punctuation">.</span><span class="token function">newImage</span><span class="token punctuation">(</span><span class="token string">"assets/whale.png"</span><span class="token punctuation">)</span>
+<span class="token keyword">local</span> whales <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">local</span> <span class="token keyword">function</span> <span class="token function">make_whale</span><span class="token punctuation">(</span>sprite<span class="token punctuation">)</span>
+    <span class="token function">assert</span><span class="token punctuation">(</span>sprite<span class="token punctuation">,</span> <span class="token string">"no sprite provided!"</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        x <span class="token operator">=</span> love<span class="token punctuation">.</span>math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> love<span class="token punctuation">.</span>graphics<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">96</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        y <span class="token operator">=</span> love<span class="token punctuation">.</span>math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> love<span class="token punctuation">.</span>graphics<span class="token punctuation">.</span><span class="token function">getHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">96</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        sprite <span class="token operator">=</span> sprite
+    <span class="token punctuation">}</span>
+<span class="token keyword">end</span>
+
+<span class="token keyword">function</span> love<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    table<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>whales<span class="token punctuation">,</span> <span class="token function">make_whale</span><span class="token punctuation">(</span>image<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    table<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>whales<span class="token punctuation">,</span> <span class="token function">make_whale</span><span class="token punctuation">(</span>image<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    table<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>whales<span class="token punctuation">,</span> <span class="token function">make_whale</span><span class="token punctuation">(</span>image<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    table<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>whales<span class="token punctuation">,</span> <span class="token function">make_whale</span><span class="token punctuation">(</span>imaeg<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    table<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>whales<span class="token punctuation">,</span> <span class="token function">make_whale</span><span class="token punctuation">(</span>image<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+
+<span class="token keyword">function</span> love<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> _<span class="token punctuation">,</span> v <span class="token keyword">in</span> <span class="token function">ipairs</span><span class="token punctuation">(</span>whales<span class="token punctuation">)</span> <span class="token keyword">do</span>
+        love<span class="token punctuation">.</span>graphics<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span>sprite<span class="token punctuation">,</span> v<span class="token punctuation">.</span>x<span class="token punctuation">,</span> v<span class="token punctuation">.</span>y<span class="token punctuation">)</span>
+    <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+</code></pre>
+<p><img src="/love-cookbook/assets/img/reading-errors/error_traceback.png" alt=""></p>
+<p>But line 5 is our <code>assert</code>, it's not the direct cause of the bug and we're calling <code>make_whale</code> in many places. So how do we fix this and how do we know which <code>make_whale</code> call was the problematic one?</p>
+<p>Well - below the error message there's a handy thing called a Traceback. This tells us what our program was doing just before it crashed! Starting from the bottom up this tells us the path of execution.</p>
+<p>Starting from the top we can work our way back:</p>
+<ul>
+<li><code>[love &quot;callbacks.lua&quot;]:245: in function 'handler'</code> - this isn't very helpful and we can ignore it</li>
+<li><code>[C]: in function 'assert'</code> - this is our assert: the line that threw the error</li>
+<li><code>main.lua:5: in function 'make_whale'</code> - this is where we called <code>assert</code></li>
+<li><code>main.lua:18: in function 'load'</code> - aha!</li>
+</ul>
+<p>Our <code>make_whale</code> function was called from line 18 in main.lua's load function and that call was the one that directly led to the error being thrown. Looking back at our code we can see that line 18 looks a little different from the others with a typo: <code>make_whale(imaeg)</code> should be <code>make_whale(image)</code>!</p>
+<iframe class="love-embed" id="love-iframe-229" src="/love-cookbook/assets/love/love-js" width="800" height="600"></iframe>
+<script>
+const iframe_229 = document.getElementById('love-iframe-229');
+iframe_229.addEventListener('load', function() {
+iframe_229.contentWindow.postMessage({lua: `love.window.setMode(800, 600) 
+local image = love.graphics.newImage("assets/whale.png")
+local whales = {}
+local function make_whale(sprite)
+ assert(sprite, "no sprite provided!")
+ return {
+ x = love.math.random(0, love.graphics.getWidth() - 96),
+ y = love.math.random(0, love.graphics.getHeight() - 96),
+ sprite = sprite
+ }
+end
+function love.load()
+ table.insert(whales, make_whale(image))
+ table.insert(whales, make_whale(image))
+ table.insert(whales, make_whale(image))
+ table.insert(whales, make_whale(image))
+ table.insert(whales, make_whale(image))
+end
+function love.draw()
+ for _, v in ipairs(whales) do
+ love.graphics.draw(v.sprite, v.x, v.y)
+ end
+end
+`}, '*');
+});
+</script>
+
+
+<footer class="guide-footer">
+  <p></p>
+
+  <p>By:
+  
+      <em>josh</em>
+    
+  </p>
+</footer>
+      </article>
+    </main>
+
+  </body>
+</html>

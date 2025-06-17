@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LÖVE Cookbook | Tables and for-loops</title>
+
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tables and for-loops</title>
+<meta name="title" content="Tables and for-loops">
+<meta name="author" content="Sheepolution">
+<meta name="description" content="Tables are a type of value in which you can store multiple values. We create a table by using curly braces.">
+<meta name="generator" content="eleventy">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://diminim.github.io/love-cookbook/guides/lua-basics/tables/">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Tables and for-loops">
+<meta property="og:description" content="Tables are a type of value in which you can store multiple values. We create a table by using curly braces.">
+<meta property="og:image" content="https://diminim.github.io/love-cookbook/assets/logo.png">
+<meta property="og:image:alt" content="LÖVE Cookbook">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://diminim.github.io/love-cookbook/guides/lua-basics/tables/">
+<meta name="twitter:title" content="Tables and for-loops">
+<meta name="twitter:description" content="Tables are a type of value in which you can store multiple values. We create a table by using curly braces.">
+<meta name="twitter:image" content="https://diminim.github.io/love-cookbook/assets/logo.png">
+<meta name="twitter:image:alt" content="LÖVE Cookbook">
+<link rel="canonical" href="https://diminim.github.io/love-cookbook/guides/lua-basics/tables/">
+
+    <script src="/love-cookbook/assets/js/codeblock.js"></script>
+    <script src="/love-cookbook/assets/js/hover_preview.js"></script>
+    <script src="/love-cookbook/assets/js/mobile.js"></script>
+
+    <link rel="stylesheet" href="/love-cookbook/assets/styles/fonts.css">
+    <link rel="stylesheet" href="/love-cookbook/assets/styles/main.css">
+    <link rel="stylesheet" href="/love-cookbook/assets/styles/prism.css">
+    <link rel="stylesheet" href="/love-cookbook/assets/styles/markdown.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" rel="stylesheet">
+  </head>
+  <body>
+    <div class="sidebar">
+      <header>
+        <a href="/love-cookbook/">
+            <div class="logo">
+                <img class="logo-unhover-img" src="/love-cookbook/assets/logo.png">
+                <img class="logo-hover-img" src="/love-cookbook/assets/logo_hover.png">
+            </div>
+
+            <h1>LÖVE Cookbook</h1>
+        </a>
+      </header>
+
+      <nav class="table-of-contents">
+        <ul class="chapters"><li class="group-header"><ul class="guides"><li><a class="" href="/love-cookbook/guides/getting-started/">Getting started</a>
+                  </li><li><a class="" href="/love-cookbook/guides/fiddle/">Fiddle</a>
+                  </li></ul>
+
+            </li><li class="group-header">Installation<ul class="guides"><li><a class="" href="/love-cookbook/guides/installation/love/">LÖVE</a>
+                  </li><li><a class="" href="/love-cookbook/guides/installation/vscode/">VSCode</a>
+                  </li><li><a class="" href="/love-cookbook/guides/installation/neovim/">Neovim</a>
+                  </li></ul>
+
+            </li><li class="group-header">Lua Basics<ul class="guides"><li><a class="" href="/love-cookbook/guides/lua-basics/lua/">Lua</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-basics/variables/">Variables</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-basics/functions/">Functions</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-basics/if-statements/">If-statements</a>
+                  </li><li><a class="active" href="/love-cookbook/guides/lua-basics/tables/">Tables and for-loops</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-basics/gotchas/">Gotchas</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-basics/recap/">Recap</a>
+                  </li></ul>
+
+            </li><li class="group-header">Lua Intermediate<ul class="guides"><li><a class="" href="/love-cookbook/guides/lua-intermediate/require/">Require</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/scope/">Scope</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/modulo/">Modulo</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/nested-for-loops/">Nested for-loops</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/standard-library/">Standard library</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/string-patterns/">String patterns</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/ternary-operators/">Ternary operators</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/metatables/">Metatables</a>
+                  </li></ul>
+
+            </li><li class="group-header">LÖVE Basics<ul class="guides"><li><a class="" href="/love-cookbook/guides/love/drawing-image/">Drawing an image</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/drawing-shapes/">Drawing shapes</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/playing-audio/">Playing audio</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/input/">Input</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/filesystem/">Filesystem</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/deltatime/">Deltatime</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/reading-errors/">Reading errors</a>
+                  </li></ul>
+
+            </li><li class="group-header">Basics<ul class="guides"><li><a class="" href="/love-cookbook/guides/basic/aabb/">AABB</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/angle-and-distance/">Angle &amp; distance</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/tiles/">Tiles</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/animation/">Animation</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/saving-and-loading/">Saving &amp; loading</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/canvases/">Canvases</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/stencil-modes/">Stencil modes</a>
+                  </li></ul>
+
+            </li><li class="group-header">Intermediate<ul class="guides"><li><a class="" href="/love-cookbook/guides/intermediate/oop/">OOP</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/collision-resolving/">Collision resolution</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/stencil-states/">Stencil states</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/coroutines/">Coroutines</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/shaders/">Shaders</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/compute-shaders/">Compute Shaders</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/box-blur/">Box Blur</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/outlines/">Outlines</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/palette/">Palette</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/pixelation/">Pixelation</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/vertex-shaders/">Vertex Shaders</a>
+                  </li></ul>
+
+            </li><li class="group-header">Advanced<ul class="guides"><li><a class="" href="/love-cookbook/guides/advanced/physics/">Physics</a>
+                  </li><li><a class="" href="/love-cookbook/guides/advanced/threads/">Threads</a>
+                  </li></ul>
+
+            </li></ul>
+
+      </nav>
+    </div>
+
+    <main>
+      <article class="guide">
+        
+<header class="guide-header">
+  <button type="button" class="menu-button">
+    <i class="material-symbols-outlined">menu</i>
+  </button>
+
+  <h1 class="title">Tables and for-loops</h1>
+</header>
+
+<p><strong>Tables</strong> are a type of value in which you can store multiple values. We create a table by using curly braces.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> fruits <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+<p>Now that we have a table, we can fill it with values. There are multiple ways to do this. We can put in the values as we create the table.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> fruits <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"pear"</span><span class="token punctuation">,</span> <span class="token string">"tomato"</span> <span class="token punctuation">}</span>
+</code></pre>
+<p>Or we can use <code>table.insert(table, value)</code>. The first argument we pass is the table, and the second argument is the value you want to insert.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> fruits <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+table<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>fruits<span class="token punctuation">,</span> <span class="token string">"apple"</span><span class="token punctuation">)</span>
+table<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>fruits<span class="token punctuation">,</span> <span class="token string">"pear"</span><span class="token punctuation">)</span>
+table<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>fruits<span class="token punctuation">,</span> <span class="token string">"tomato"</span><span class="token punctuation">)</span>
+</code></pre>
+<p>If you print <code>fruits</code>, you will see something like this:</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> fruits <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"pear"</span><span class="token punctuation">,</span> <span class="token string">"tomato"</span> <span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span> <span class="token comment">-- Output: table: 0x02b857e46f68</span>
+</code></pre>
+<p><code>table: 0x02b857e46f68</code> tells us that this is a table, and where in your memory it is located. That is not very useful to us. We want to know what is <em>inside</em> the table.</p>
+<p>Our table is like a sequence, or a list. Instead of printing the entire table, let's print the first item in the list. We can do this by using square brackets.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> fruits <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"pear"</span><span class="token punctuation">,</span> <span class="token string">"tomato"</span> <span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">-- Output: "apple"</span>
+</code></pre>
+<p>The number at which an item is stored is called the <ins>index</ins>. So <code>&quot;apple&quot;</code> is on the first index.</p>
+<p>If we want to print all the values, we <em>could</em> print them one by one.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> fruits <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"pear"</span><span class="token punctuation">,</span> <span class="token string">"tomato"</span> <span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">-- Output: "apple"</span>
+<span class="token function">print</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">-- Output: "pear"</span>
+<span class="token function">print</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">-- Output: "tomato"</span>
+</code></pre>
+<p>But this is very inefficient. Imagine if we had a hundred items. Luckily, there is a better way.</p>
+<h2 id="for-loops" tabindex="-1">For-loops <a class="anchor" href="#for-loops">#</a></h2>
+<p>A <strong>for-loop</strong> is a type of statement that allows you to repeat certain code a number of times.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">for</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span> <span class="token keyword">do</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Hello!"</span><span class="token punctuation">)</span> <span class="token comment">-- Output: Hello! (x10)</span>
+<span class="token keyword">end</span>
+</code></pre>
+<p>This for-loop repeats 10 times. A single repetition is called an <ins>iteration</ins>.</p>
+<p>An if-statement asks for one parameter, a condition. A for-loop asks for two parameters, separated by a comma.</p>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>&quot;Parameter&quot; here is not to be confused with function parameters. In this context it means what we provide to the statement.</p>
+</div>
+<ul>
+<li>With <code>i = 1</code>, the <code>i</code> is the variable we will be using, and <code>1</code> is the starting number.</li>
+<li><code>10</code> is the number up to which the for-loop will repeat.</li>
+</ul>
+<p>The variable <code>i</code> will increase by 1 for each iteration</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">for</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span> <span class="token keyword">do</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token comment">-- Output: 1, 2, 3</span>
+<span class="token keyword">end</span>
+</code></pre>
+<p>Because <code>i</code> is a variable, we can name it whatever we want.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">for</span> whale <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">8</span> <span class="token keyword">do</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>whale<span class="token punctuation">)</span> <span class="token comment">-- Output: 4, 5, 6, 7, 8</span>
+<span class="token keyword">end</span>
+</code></pre>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>There is a third, optional parameter. This sets by how much the variable <code>i</code> increases.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">for</span> i <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">5</span> <span class="token keyword">do</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token comment">-- Output: -5, 0, 5, 10, 15, 20</span>
+<span class="token keyword">end</span>
+</code></pre>
+</div>
+<p>The variable is only available inside the for-loop.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">for</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span> <span class="token keyword">do</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token comment">-- Output: 1, 2, 3, 4, 5</span>
+<span class="token keyword">end</span>
+
+<span class="token function">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token comment">-- Output: nil</span>
+</code></pre>
+<h3 id="while-loops" tabindex="-1">While-loops <a class="anchor" href="#while-loops">#</a></h3>
+<p><span data-abstract="A while-loop is a loop that keeps looping as long as the provided condition is true."></span></p>
+<p>Besides the for-loops there is also a <strong>while-loop</strong>. It's like an if-statement and for-loop combined.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> a <span class="token operator">=</span> <span class="token number">0</span>
+
+<span class="token keyword">while</span> a <span class="token operator">&lt;</span> <span class="token number">5</span> <span class="token keyword">do</span>
+    a <span class="token operator">=</span> a <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">-- Output: 1, 2, 3, 4, 5</span>
+<span class="token keyword">end</span>
+</code></pre>
+<p>The loop repeats as long as the condition is true.</p>
+<div class="markdown-alert markdown-alert-warning"><p class="markdown-alert-title"><svg class="octicon octicon-alert mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p><p>Be careful! If the condition never becomes false, the while-loop will repeat indefinitely, causing LÖVE to hang.</p>
+</div>
+<p>It is possible to exit a loop early by using a <code>break</code>. It's somewhat similar to how you exit a function with <code>return</code>.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> a <span class="token operator">=</span> <span class="token number">0</span>
+
+<span class="token keyword">while</span> <span class="token keyword">true</span> <span class="token keyword">do</span>
+    a <span class="token operator">=</span> a <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">-- Output: 1, 2, 3, 4, 5</span>
+
+    <span class="token keyword">if</span> a <span class="token operator">></span> <span class="token number">5</span> <span class="token keyword">then</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"Escaped the infinite loop!"</span><span class="token punctuation">)</span>
+</code></pre>
+<p>A for-loop is useful when you know how many steps to take. A while-loop is useful when you know the end condition. For example, what if we want to calculate the power-of-2-sequence up to a million? We don't know how many steps it will take, but we do know when we want to end it.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> a <span class="token operator">=</span> <span class="token number">1</span>
+
+<span class="token keyword">while</span> a <span class="token operator">&lt;</span> <span class="token number">1000000</span> <span class="token keyword">do</span>
+    a <span class="token operator">=</span> a <span class="token operator">*</span> <span class="token number">2</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">-- Output: 2, 4, 8, 16, 32, .... 524288, 1048576</span>
+<span class="token keyword">end</span>
+</code></pre>
+<p>There is one more type of loop. A <strong>repeat-until loop</strong>.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> x <span class="token operator">=</span> <span class="token number">0</span>
+
+<span class="token keyword">repeat</span>
+    x <span class="token operator">=</span> x <span class="token operator">+</span> <span class="token number">1</span>
+<span class="token keyword">until</span> x <span class="token operator">></span> <span class="token number">5</span>
+</code></pre>
+<p>It's similar to a while loop, except it always executes what's inside the loop at least once.</p>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>Even if we won't use these alternative loops as much, it's good to know of their existence.</p>
+</div>
+<h2 id="looping-through-tables" tabindex="-1">Looping through tables <a class="anchor" href="#looping-through-tables">#</a></h2>
+<p>Now that we understand for-loops, we can use them to loop through our table.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> fruits <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"pear"</span><span class="token punctuation">,</span> <span class="token string">"tomato"</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">for</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span> <span class="token keyword">do</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">-- Output: apple, pear, tomato</span>
+<span class="token keyword">end</span>
+</code></pre>
+<p>Now, even if we have a hundred items, we can go over them with ease.</p>
+<p>We can get the number of items in our table by using a number sign. We can use this to dynamically set how often the for-loop should repeat.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> fruits <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"pear"</span><span class="token punctuation">,</span> <span class="token string">"tomato"</span> <span class="token punctuation">}</span>
+
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token operator">#</span>fruits<span class="token punctuation">)</span> <span class="token comment">-- Output: 3</span>
+
+<span class="token keyword">for</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">#</span>fruits <span class="token keyword">do</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">-- Output: apple, pear, tomato</span>
+<span class="token keyword">end</span>
+</code></pre>
+<h3 id="ipairs" tabindex="-1">ipairs <a class="anchor" href="#ipairs">#</a></h3>
+<p>Because looping through a table is so common, Lua provides a shortcut for this. Using a <ins>for-in</ins> loop, and the standard function <code>ipairs</code> we can do the following:</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> fruits <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"pear"</span><span class="token punctuation">,</span> <span class="token string">"tomato"</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">for</span> i<span class="token punctuation">,</span> v <span class="token keyword">in</span> <span class="token function">ipairs</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span> <span class="token keyword">do</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+
+<span class="token comment">-- Output:</span>
+<span class="token comment">-- 1, apple</span>
+<span class="token comment">-- 2, pear</span>
+<span class="token comment">-- 3, tomato</span>
+</code></pre>
+<p>This is the equivalent to:</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> fruits <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"pear"</span><span class="token punctuation">,</span> <span class="token string">"tomato"</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">for</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">#</span>fruits <span class="token keyword">do</span>
+    <span class="token keyword">local</span> v <span class="token operator">=</span> fruits<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+</code></pre>
+<p>The variable <code>i</code> becomes the index of that iteration, and the variable <code>v</code> becomes the value on that index.</p>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>Again, <code>i</code> and <code>v</code> are variables, so we can name them whatever we want.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">for</span> index<span class="token punctuation">,</span> value of <span class="token function">ipairs</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span> <span class="token keyword">do</span>
+</code></pre>
+</div>
+<h2 id="unpack" tabindex="-1">unpack <a class="anchor" href="#unpack">#</a></h2>
+<p>With the function <code>unpack</code> we can &quot;unpack&quot; a table.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> fruits <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"pear"</span><span class="token punctuation">,</span> <span class="token string">"tomato"</span> <span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">unpack</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">-- Output: apple, pear, tomato</span>
+</code></pre>
+<p>We can use it to clone a table for example.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> fruits <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"pear"</span><span class="token punctuation">,</span> <span class="token string">"tomato"</span> <span class="token punctuation">}</span>
+<span class="token keyword">local</span> fruits_clone <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token function">unpack</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span>fruits_clone<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">-- Output: pear</span>
+</code></pre>
+<p>Or to assign the contents of the table to individual variables.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> fruits <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"pear"</span><span class="token punctuation">,</span> <span class="token string">"tomato"</span> <span class="token punctuation">}</span>
+<span class="token keyword">local</span> fruit1<span class="token punctuation">,</span> fruit2<span class="token punctuation">,</span> fruit3 <span class="token operator">=</span> <span class="token function">unpack</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>fruit2<span class="token punctuation">)</span> <span class="token comment">-- Output: pear</span>
+</code></pre>
+<h2 id="editing-tables" tabindex="-1">Editing tables <a class="anchor" href="#editing-tables">#</a></h2>
+<p>We have already learned that we can use <code>table.insert(table, value)</code> to insert a value into our table. Similarly, we can use <code>table.remove(table, index)</code> to remove a value.</p>
+<pre><code class="language-lua"><span data-attrs="3"></span><span class="token keyword">local</span> fruits <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"pear"</span><span class="token punctuation">,</span> <span class="token string">"tomato"</span> <span class="token punctuation">}</span>
+
+table<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>fruits<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment">-- This removes "pear"</span>
+
+<span class="token keyword">for</span> i<span class="token punctuation">,</span> v <span class="token keyword">in</span> <span class="token function">ipairs</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span> <span class="token keyword">do</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token comment">-- Output: apple, tomato</span>
+<span class="token keyword">end</span>
+</code></pre>
+<p>We can edit a value, by referring to that value's index.</p>
+<pre><code class="language-lua"><span data-attrs="4"></span><span class="token keyword">local</span> fruits <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"pear"</span><span class="token punctuation">,</span> <span class="token string">"tomato"</span> <span class="token punctuation">}</span>
+
+<span class="token comment">-- Change the value on the second index to "banana".</span>
+fruits<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"banana"</span>
+
+<span class="token keyword">for</span> i<span class="token punctuation">,</span> v <span class="token keyword">in</span> <span class="token function">ipairs</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span> <span class="token keyword">do</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token comment">-- Output: apple, banana, tomato</span>
+<span class="token keyword">end</span>
+</code></pre>
+<p>This is also yet another way to add a value to our table.</p>
+<pre><code class="language-lua"><span data-attrs="4"></span><span class="token keyword">local</span> fruits <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"pear"</span><span class="token punctuation">,</span> <span class="token string">"tomato"</span> <span class="token punctuation">}</span>
+
+<span class="token comment">-- Change the value on the fourth index to "banana".</span>
+fruits<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"banana"</span>
+
+<span class="token keyword">for</span> i<span class="token punctuation">,</span> v <span class="token keyword">in</span> <span class="token function">ipairs</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span> <span class="token keyword">do</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token comment">-- Output: apple, pear, tomato, banana</span>
+<span class="token keyword">end</span>
+</code></pre>
+<div class="markdown-alert markdown-alert-warning"><p class="markdown-alert-title"><svg class="octicon octicon-alert mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p><p>Be careful when you set a value this way. If you leave a gap in the sequence, then Lua will be confused about how many items are in your table.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> fruits <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"pear"</span><span class="token punctuation">,</span> <span class="token string">"tomato"</span> <span class="token punctuation">}</span>
+fruits<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"banana"</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token operator">#</span>fruits<span class="token punctuation">)</span> <span class="token comment">-- Output: 3</span>
+</code></pre>
+</div>
+<h2 id="objects" tabindex="-1">Objects <a class="anchor" href="#objects">#</a></h2>
+<p><span data-abstract="Objects are tables that use keys rather than indexes. We call these the object's properties."></span></p>
+<p>Tables can be used as a list, where we use numbers as indexes, but we can also use strings as indexes.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> rectangle <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+rectangle<span class="token punctuation">[</span><span class="token string">"width"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">50</span>
+</code></pre>
+<p>When using a string as the index, we call that a <ins>property</ins>. This property has <code>&quot;width&quot;</code> as its <ins>key</ins>, and <code>50</code> as its <ins>value</ins>.</p>
+<p>A table with properties is also called an <strong>Object</strong>.</p>
+<p>A shorter way to assign a property is to use a dot.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> rectangle <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+rectangle<span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token number">50</span>
+<span class="token function">print</span><span class="token punctuation">(</span>rectangle<span class="token punctuation">.</span>width<span class="token punctuation">)</span> <span class="token comment">-- 50</span>
+
+<span class="token comment">-- We can still access it with the string.</span>
+<span class="token function">print</span><span class="token punctuation">(</span>rectangle<span class="token punctuation">[</span><span class="token string">"width"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">-- 50</span>
+</code></pre>
+<p>We can also add properties when creating the table.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> rectangle <span class="token operator">=</span> <span class="token punctuation">{</span>
+    x <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span>
+    y <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">,</span>
+    width <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">,</span>
+    height <span class="token operator">=</span> <span class="token number">120</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>You can use any type of value as a table key. Yes, that includes functions and tables! Though you should probably keep it at numbers and strings.</p>
+</div>
+<h3 id="pairs" tabindex="-1">Pairs <a class="anchor" href="#pairs">#</a></h3>
+<p>We use <code>ipairs</code> for looping through a list table. We can use <code>pairs</code> for looping through an object table.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> rectangle <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+rectangle<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">10</span>
+rectangle<span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">20</span>
+rectangle<span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token number">50</span>
+rectangle<span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token number">120</span>
+
+<span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> <span class="token function">pairs</span><span class="token punctuation">(</span>rectangle<span class="token punctuation">)</span> <span class="token keyword">do</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+
+<span class="token comment">-- Output:</span>
+<span class="token comment">-- width, 50</span>
+<span class="token comment">-- y, 20</span>
+<span class="token comment">-- height, 120</span>
+<span class="token comment">-- x, 10,</span>
+</code></pre>
+<div class="markdown-alert markdown-alert-warning"><p class="markdown-alert-title"><svg class="octicon octicon-alert mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p><p>Though it's possible to use <code>pairs</code> for list tables as well, the order which you get the indexes is random. Because of this, you should always use <code>ipairs</code> for list tables.</p>
+</div>
+<h2 id="usage" tabindex="-1">Usage <a class="anchor" href="#usage">#</a></h2>
+<p>By using tables, we can store multiple items in a single variable. If we have multiple enemies in our game, we won't need to make a separate variable for each of them. We can store these enemies inside our table (and remove them when defeated).</p>
+
+
+<footer class="guide-footer">
+  <p></p>
+
+  <p>By:
+  
+      <em>Sheepolution</em>
+    
+  </p>
+</footer>
+      </article>
+    </main>
+
+  </body>
+</html>

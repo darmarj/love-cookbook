@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LÖVE Cookbook | Variables</title>
+
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Variables</title>
+<meta name="title" content="Variables">
+<meta name="author" content="Sheepolution">
+<meta name="description" content="Variables are words that contain a value, like a number for example.">
+<meta name="generator" content="eleventy">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://diminim.github.io/love-cookbook/guides/lua-basics/variables/">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Variables">
+<meta property="og:description" content="Variables are words that contain a value, like a number for example.">
+<meta property="og:image" content="https://diminim.github.io/love-cookbook/assets/logo.png">
+<meta property="og:image:alt" content="LÖVE Cookbook">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://diminim.github.io/love-cookbook/guides/lua-basics/variables/">
+<meta name="twitter:title" content="Variables">
+<meta name="twitter:description" content="Variables are words that contain a value, like a number for example.">
+<meta name="twitter:image" content="https://diminim.github.io/love-cookbook/assets/logo.png">
+<meta name="twitter:image:alt" content="LÖVE Cookbook">
+<link rel="canonical" href="https://diminim.github.io/love-cookbook/guides/lua-basics/variables/">
+
+    <script src="/love-cookbook/assets/js/codeblock.js"></script>
+    <script src="/love-cookbook/assets/js/hover_preview.js"></script>
+    <script src="/love-cookbook/assets/js/mobile.js"></script>
+
+    <link rel="stylesheet" href="/love-cookbook/assets/styles/fonts.css">
+    <link rel="stylesheet" href="/love-cookbook/assets/styles/main.css">
+    <link rel="stylesheet" href="/love-cookbook/assets/styles/prism.css">
+    <link rel="stylesheet" href="/love-cookbook/assets/styles/markdown.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" rel="stylesheet">
+  </head>
+  <body>
+    <div class="sidebar">
+      <header>
+        <a href="/love-cookbook/">
+            <div class="logo">
+                <img class="logo-unhover-img" src="/love-cookbook/assets/logo.png">
+                <img class="logo-hover-img" src="/love-cookbook/assets/logo_hover.png">
+            </div>
+
+            <h1>LÖVE Cookbook</h1>
+        </a>
+      </header>
+
+      <nav class="table-of-contents">
+        <ul class="chapters"><li class="group-header"><ul class="guides"><li><a class="" href="/love-cookbook/guides/getting-started/">Getting started</a>
+                  </li><li><a class="" href="/love-cookbook/guides/fiddle/">Fiddle</a>
+                  </li></ul>
+
+            </li><li class="group-header">Installation<ul class="guides"><li><a class="" href="/love-cookbook/guides/installation/love/">LÖVE</a>
+                  </li><li><a class="" href="/love-cookbook/guides/installation/vscode/">VSCode</a>
+                  </li><li><a class="" href="/love-cookbook/guides/installation/neovim/">Neovim</a>
+                  </li></ul>
+
+            </li><li class="group-header">Lua Basics<ul class="guides"><li><a class="" href="/love-cookbook/guides/lua-basics/lua/">Lua</a>
+                  </li><li><a class="active" href="/love-cookbook/guides/lua-basics/variables/">Variables</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-basics/functions/">Functions</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-basics/if-statements/">If-statements</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-basics/tables/">Tables and for-loops</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-basics/gotchas/">Gotchas</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-basics/recap/">Recap</a>
+                  </li></ul>
+
+            </li><li class="group-header">Lua Intermediate<ul class="guides"><li><a class="" href="/love-cookbook/guides/lua-intermediate/require/">Require</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/scope/">Scope</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/modulo/">Modulo</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/nested-for-loops/">Nested for-loops</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/standard-library/">Standard library</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/string-patterns/">String patterns</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/ternary-operators/">Ternary operators</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/metatables/">Metatables</a>
+                  </li></ul>
+
+            </li><li class="group-header">LÖVE Basics<ul class="guides"><li><a class="" href="/love-cookbook/guides/love/drawing-image/">Drawing an image</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/drawing-shapes/">Drawing shapes</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/playing-audio/">Playing audio</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/input/">Input</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/filesystem/">Filesystem</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/deltatime/">Deltatime</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/reading-errors/">Reading errors</a>
+                  </li></ul>
+
+            </li><li class="group-header">Basics<ul class="guides"><li><a class="" href="/love-cookbook/guides/basic/aabb/">AABB</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/angle-and-distance/">Angle &amp; distance</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/tiles/">Tiles</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/animation/">Animation</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/saving-and-loading/">Saving &amp; loading</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/canvases/">Canvases</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/stencil-modes/">Stencil modes</a>
+                  </li></ul>
+
+            </li><li class="group-header">Intermediate<ul class="guides"><li><a class="" href="/love-cookbook/guides/intermediate/oop/">OOP</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/collision-resolving/">Collision resolution</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/stencil-states/">Stencil states</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/coroutines/">Coroutines</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/shaders/">Shaders</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/compute-shaders/">Compute Shaders</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/box-blur/">Box Blur</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/outlines/">Outlines</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/palette/">Palette</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/pixelation/">Pixelation</a>
+                  </li><li><a class="" href="/love-cookbook/guides/intermediate/vertex-shaders/">Vertex Shaders</a>
+                  </li></ul>
+
+            </li><li class="group-header">Advanced<ul class="guides"><li><a class="" href="/love-cookbook/guides/advanced/physics/">Physics</a>
+                  </li><li><a class="" href="/love-cookbook/guides/advanced/threads/">Threads</a>
+                  </li></ul>
+
+            </li></ul>
+
+      </nav>
+    </div>
+
+    <main>
+      <article class="guide">
+        
+<header class="guide-header">
+  <button type="button" class="menu-button">
+    <i class="material-symbols-outlined">menu</i>
+  </button>
+
+  <h1 class="title">Variables</h1>
+</header>
+
+<p><strong>Variables</strong> are words that contain a value, like a number for example.</p>
+<p>We can make a variable like so:</p>
+<pre><code class="language-lua"><span data-attrs=""></span>a <span class="token operator">=</span> <span class="token number">10</span>
+</code></pre>
+<p>We created the variable <code>a</code> and gave it the value <code>10</code>. We can see the value of a variable by printing it.</p>
+<pre><code class="language-lua"><span data-attrs=""></span>a <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token function">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">-- Output: 10</span>
+</code></pre>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>When you create a variable, we call that a <strong>declaration</strong>.</p>
+<p>When you give a variable a value, we call that an <strong>assignment</strong>.</p>
+<p>So we <ins>declared</ins> the variable <code>a</code> and <ins>assigned</ins> it the value <code>10</code>.</p>
+</div>
+<p>We can change the value of a variable, hence the name <em>variable</em>.</p>
+<pre><code class="language-lua"><span data-attrs=""></span>a <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token function">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">-- Output: 10</span>
+a <span class="token operator">=</span> <span class="token number">20</span>
+<span class="token function">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">-- Output: 20</span>
+</code></pre>
+<p>With numbers we can do arithmetics.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">12</span> <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token comment">-- Output: 16</span>
+</code></pre>
+<p>This means that, if a variable has a number as its value, we can do arithmetics with it.</p>
+<pre><code class="language-lua"><span data-attrs=""></span>a <span class="token operator">=</span> <span class="token number">12</span>
+b <span class="token operator">=</span> <span class="token number">4</span>
+<span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span> <span class="token comment">-- Output: 16</span>
+<span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">-</span> b<span class="token punctuation">)</span> <span class="token comment">-- Output: 8</span>
+<span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">*</span> b<span class="token punctuation">)</span> <span class="token comment">-- Output: 48</span>
+<span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">/</span> b<span class="token punctuation">)</span> <span class="token comment">-- Output: 3</span>
+<span class="token function">print</span><span class="token punctuation">(</span>a <span class="token operator">^</span> b<span class="token punctuation">)</span> <span class="token comment">-- Output: 20736</span>
+<span class="token comment">-- ^ is for exponentiation (12 * 12 * 12 * 12)</span>
+</code></pre>
+<p>When we use a variable, there is no reference to the variable itself, only its value. In this code we change the values of <code>a</code> and <code>b</code>, but that does not affect the value of <code>c</code>. The value of <code>c</code> becomes <code>16</code>, and not <code>a + b</code>.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token comment">-- Tip: This way we can declare multiple variables on a single line.</span>
+a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">4</span>
+c <span class="token operator">=</span> a <span class="token operator">+</span> b
+a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span>
+<span class="token function">print</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token comment">-- Output: 16</span>
+</code></pre>
+<h2 id="strings" tabindex="-1">Strings <a class="anchor" href="#strings">#</a></h2>
+<p>Besides numbers, we can also store text. In programming, text is called a <strong>string</strong> because it's a <em>string of characters</em>.</p>
+<pre><code class="language-lua"><span data-attrs=""></span>animal <span class="token operator">=</span> <span class="token string">"whale"</span>
+color <span class="token operator">=</span> <span class="token string">"blue"</span>
+
+<span class="token comment">-- By separating them with a comma we can print multiple values at once.</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"My favorite animal:"</span><span class="token punctuation">,</span> animal<span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"My favorite color:"</span><span class="token punctuation">,</span> color<span class="token punctuation">)</span>
+</code></pre>
+<p>We can connect strings by using two dots. This is called <em>string concatenation</em>.</p>
+<pre><code class="language-lua"><span data-attrs=""></span>animal <span class="token operator">=</span> <span class="token string">"whale"</span>
+color <span class="token operator">=</span> <span class="token string">"blue"</span>
+
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"The "</span> <span class="token operator">..</span> animal <span class="token operator">..</span> <span class="token string">" is "</span> <span class="token operator">..</span> color <span class="token operator">..</span> <span class="token string">"."</span><span class="token punctuation">)</span>
+<span class="token comment">-- Output: The whale is blue.</span>
+</code></pre>
+<h2 id="nil" tabindex="-1">nil <a class="anchor" href="#nil">#</a></h2>
+<p>When a variable has no value, we say it is <code>nil</code>. We can also assign <code>nil</code> to a variable to remove its value.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token function">print</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span> <span class="token comment">-- Output: nil</span>
+
+test <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token function">print</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span> <span class="token comment">-- Output: 10</span>
+
+test <span class="token operator">=</span> <span class="token keyword">nil</span> <span class="token comment">-- We assign nil to remove the value.</span>
+<span class="token function">print</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span> <span class="token comment">-- Output: nil</span>
+</code></pre>
+<h2 id="types" tabindex="-1">Types <a class="anchor" href="#types">#</a></h2>
+<p>We have shown that variables can be a number, or a string, or no value at all. We call this the variable's <strong>type</strong>.</p>
+<p>You can get the type of a variable by using <code>type</code>.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> a <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token keyword">local</span> animal <span class="token operator">=</span> <span class="token string">"whale"</span>
+
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">type</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">-- Output: number</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">type</span><span class="token punctuation">(</span>animal<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">-- Output: string</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">type</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">-- Output: nil</span>
+</code></pre>
+<h2 id="naming-variables" tabindex="-1">Naming variables <a class="anchor" href="#naming-variables">#</a></h2>
+<p>The word in which you store a value can be almost anything.</p>
+<pre><code class="language-lua"><span data-attrs=""></span>whale <span class="token operator">=</span> <span class="token number">3</span>
+cOoKbOoK <span class="token operator">=</span> <span class="token number">1040</span>
+asdfghjkl <span class="token operator">=</span> <span class="token number">42</span>
+</code></pre>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>Lua doesn't care what you name your variables. Earlier we used the variables <code>width</code> and <code>height</code>, but we also could have called them <code>chocolate</code> and <code>apple</code>. Of course, you would want to use names that make sense for their usage.</p>
+</div>
+<p>Variables are case-sensitive. This means that when you have the same word, but with different casing, it's not treated as the same.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token comment">-- These are three different variables, each with their own value.</span>
+whale <span class="token operator">=</span> <span class="token number">3</span>
+WHALE <span class="token operator">=</span> <span class="token number">10</span>
+wHaLe <span class="token operator">=</span> <span class="token number">200</span>
+</code></pre>
+<div class="markdown-alert markdown-alert-important"><p class="markdown-alert-title"><svg class="octicon octicon-report mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p><p>There are a few rules when naming a variable.</p>
+<ol>
+<li>The name may not start with a number</li>
+</ol>
+<pre><code class="language-lua"><span data-attrs=""></span>test8 <span class="token comment">--Good</span>
+te8st <span class="token comment">--Good</span>
+8test <span class="token comment">--Bad, error!</span>
+</code></pre>
+<ol start="2">
+<li>The only allowed special character is an underscore.</li>
+</ol>
+<pre><code class="language-lua"><span data-attrs=""></span>my_variable <span class="token comment">-- Good</span>
+my@variable <span class="token comment">-- Bad, error!</span>
+my$variable <span class="token comment">-- Bad, error!</span>
+</code></pre>
+<ol start="3">
+<li>It can't be a keyword. A keyword is a word that the programming language uses.</li>
+</ol>
+<p>Here is a list of all the Lua keywords:</p>
+<pre><code>and       break     do        else      elseif
+end       false     for       function  if
+in        local     nil       not       or
+repeat    return    then      true      until     while
+</code></pre>
+<p>Note that <code>print</code> is not a keyword. It is a standard variable. You want to avoid overriding these standard variables.</p>
+<pre><code class="language-lua"><span data-attrs=""></span>print <span class="token operator">=</span> <span class="token string">"hello"</span>
+a <span class="token operator">=</span> <span class="token number">5</span>
+<span class="token function">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">-- Error!</span>
+</code></pre>
+</div>
+<h2 id="local-variables" tabindex="-1">Local variables <a class="anchor" href="#local-variables">#</a></h2>
+<p><span data-abstract="Local variables are variables that are only available within the scope they are created."></span></p>
+<p>By default, all variables are <strong>global</strong>. This means that they can be used everywhere in your project. That sounds like a good thing, but it can get messy when you have a big project with many variables.</p>
+<p>Because of that, we often use <strong>local</strong> variables. We can create a local variable by putting the keyword <code>local</code> in front.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> a <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment">-- We can reassign a value to our local variable, and it will remain local.</span>
+a <span class="token operator">=</span> <span class="token number">10</span>
+
+<span class="token comment">-- We can declare a local variable without assigning it a value right away.</span>
+<span class="token keyword">local</span> b
+b <span class="token operator">=</span> <span class="token number">20</span>
+</code></pre>
+<p>Local variables are only accessible where they are declared. We call this its <em>scope</em>. In a later chapter you will learn more about scope, but in simple terms it means the <em>code block</em> it is in, or otherwise the file.</p>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>Every time you see and <code>end</code>, then that is the end of a <em>code block</em>.</p>
+</div>
+<p>Because it is good practice, we will use local variables throughout this cookbook.</p>
+<h2 id="usage" tabindex="-1">Usage <a class="anchor" href="#usage">#</a></h2>
+<p>By using variables we can keep track of a value. For example, your ammo can be a variable, and when you shoot we subtract from that value to keep track of how many bullets you have left.</p>
+<p>Another great thing about variables is that when we use one in multiple places, we only need to change one value for it to be applied those place. In the code below we can change the <code>width</code> and <code>height</code> variables to change the width and height of all rectangles.</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token keyword">local</span> width<span class="token punctuation">,</span> height
+
+<span class="token keyword">function</span> love<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    width <span class="token operator">=</span> <span class="token number">100</span>
+    height <span class="token operator">=</span> <span class="token number">75</span>
+<span class="token keyword">end</span>
+
+<span class="token keyword">function</span> love<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    love<span class="token punctuation">.</span>graphics<span class="token punctuation">.</span><span class="token function">rectangle</span><span class="token punctuation">(</span><span class="token string">"fill"</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">)</span>
+    love<span class="token punctuation">.</span>graphics<span class="token punctuation">.</span><span class="token function">rectangle</span><span class="token punctuation">(</span><span class="token string">"fill"</span><span class="token punctuation">,</span> <span class="token number">130</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">)</span>
+    love<span class="token punctuation">.</span>graphics<span class="token punctuation">.</span><span class="token function">rectangle</span><span class="token punctuation">(</span><span class="token string">"fill"</span><span class="token punctuation">,</span> <span class="token number">250</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">)</span>
+    love<span class="token punctuation">.</span>graphics<span class="token punctuation">.</span><span class="token function">rectangle</span><span class="token punctuation">(</span><span class="token string">"fill"</span><span class="token punctuation">,</span> <span class="token number">370</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+</code></pre>
+<iframe class="love-embed" id="love-iframe-354" src="/love-cookbook/assets/love/love-js" width="800" height="200"></iframe>
+<script>
+const iframe_354 = document.getElementById('love-iframe-354');
+iframe_354.addEventListener('load', function() {
+iframe_354.contentWindow.postMessage({lua: `love.window.setMode(800, 200) 
+local width, height
+function love.load()
+ width = 100
+ height = 75
+end
+function love.draw()
+ love.graphics.rectangle("fill", 10, 10, width, height)
+ love.graphics.rectangle("fill", 130, 10, width, height)
+ love.graphics.rectangle("fill", 250, 10, width, height)
+ love.graphics.rectangle("fill", 370, 10, width, height)
+end
+`}, '*');
+});
+</script>
+
+
+<footer class="guide-footer">
+  <p></p>
+
+  <p>By:
+  
+      <em>Sheepolution</em>
+    
+  </p>
+</footer>
+      </article>
+    </main>
+
+  </body>
+</html>

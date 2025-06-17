@@ -1,0 +1,370 @@
+@view-transition {
+  navigation: auto;
+}
+
+:root {
+  --color-background: #FFEFDC;
+  --color-background-panel: #FCD2A5;
+  --color-text: #5C5874;
+  --color-text-dark: #332b3d;
+  --color-primary: #9A7186;
+
+  --color-faded-1: #887D97;
+  --color-faded-2: #C1A9B8;
+  --color-blue: #8FB7B7;
+  --color-whale: #3d7fb6;
+  --color-red: #FF4278;
+  --color-yellow: #FFd2A8;
+  --color-orange: #FF8E61;
+  --color-vanilla: #fff7ed;
+}
+
+html {
+  background: var(--color-background);
+}
+
+body {
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 2rem;
+
+  font-family: "Inter", serif;
+  color: var(--color-text);
+}
+
+main {
+  flex: 1;
+  min-width: 0;
+  margin: 0 1rem;
+}
+
+/* html {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+  margin: 2rem;
+
+  color: var(--color-text);
+}
+
+body {
+  display: flex;
+  gap: 2rem;
+  min-height: calc(100vh - 64px);
+  box-sizing: border-box;
+  overflow: hidden;
+  overflow-x: scroll; 
+  
+  ^ this creates a scrollbar at the bottom even when content fits. 
+  in the future, horizontal scrolling should never be a thing 
+ 
+  
+  font-family: "Inter", serif;
+  line-height: 1.6;
+  color: black;
+  background-color: var(--color-background);
+}
+
+main {
+  flex: 6;
+} */
+
+
+/* ---- sidebar ---- */
+
+.sidebar {
+  flex: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 15rem;
+}
+
+.sidebar header img {
+  width: 60%;
+  height: auto;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.sidebar header a {
+  text-decoration: none;
+}
+
+.sidebar header h1 {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+
+  font-family: "Nunito", serif;
+  color: var(--color-primary);
+}
+
+/* images occupy the same space */
+.logo {
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: 1;
+}
+.logo > .logo-hover-img,
+.logo > .logo-unhover-img {
+  grid-area: 1 / 1 / -1 / -1;
+}
+
+/* using display: hidden means the image has to be fetched when first hovered, causing a flicker. */
+.logo-hover-img {
+  opacity: 0;
+}
+.logo:hover .logo-unhover-img {
+  opacity: 0;
+}
+.logo:hover .logo-hover-img {
+  opacity: 1;
+}
+
+.table-of-contents {
+  background-color: var(--color-background-panel);
+  border-radius: .25rem;
+  flex-grow: 1;
+}
+
+.table-of-contents .chapters {
+  list-style: none;
+  padding-left: 1rem;
+}
+.table-of-contents .chapters > li {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.table-of-contents .guides {
+  list-style: none;
+  padding-left: 2rem;
+}
+
+.table-of-contents .guides > li a {
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-text);
+  position: relative;
+}
+
+.table-of-contents .guides > li a:before {
+  content: '';
+  display: inline-block;
+  width: .25rem;
+  height: 1rem;
+  position: absolute;
+  left: -.75rem;
+  top: .1rem;
+  border-radius: .1rem;
+  
+  background-color: var(--color-text);
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.table-of-contents .guides > li a:hover:before {
+  opacity: 1;
+}
+
+.table-of-contents .guides > li a.active:before {
+  opacity: 1;
+}
+
+
+
+/* ---- guide ---- */
+
+.guide {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  color: var(--color-text-dark);
+}
+
+.guide p,
+.guide ul,
+.guide ol {
+  margin: 0;
+
+  line-height: 1.5;
+}
+
+/* ignore abstract */
+.guide p:has([data-abstract]) {
+  display: none;
+}
+
+.guide img {
+  border-radius: .5rem;
+  border: var(--color-faded-1) .1rem solid;
+}
+
+.guide a {
+  color: var(--color-whale);
+}
+
+.guide .menu-button {
+  display: none; /* is flexbox for mobile */
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 50%;
+
+  color: var(--color-text);
+  background-color: var(--color-background);
+  transition: background-color .05s;
+}
+.guide .menu-button:active {
+  background-color: var(--color-faded-2);
+}
+.guide .menu-button i {
+  font-size: 2rem;
+}
+
+.guide-header {
+  margin: .5rem 0;
+}
+
+.guide-header .title {
+  border-bottom: solid .1rem var(--color-faded-2);
+  padding: .5rem 0;
+  margin-top: 3rem;
+  
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.guide h1 { font-size: 2.0rem; font-weight: bold; }
+.guide h2 { font-size: 1.8rem; font-weight: bold; }
+.guide h3 { font-size: 1.6rem; font-weight: bold; }
+.guide h4 { font-size: 1.4rem; }
+.guide h5 { font-size: 1.2rem; }
+.guide h6 { font-size: 1.0rem; }
+
+.guide :is(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  margin-top: 1rem;
+  
+  color: var(--color-text);
+  font-family: "Nunito", serif;
+}
+
+/* combinatorial way to remove margins on subsequent headers */
+.guide :is(h1, h2, h3, h4, h5, h6) + :is(h1, h2, h3, h4, h5, h6) {
+  margin-top: 0;
+}
+
+/* header link */
+.guide :is(h1, h2, h3, h4, h5, h6) a {
+  color: var(--color-text);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity .1s;
+}
+.guide :is(h1, h2, h3, h4, h5, h6):hover a {
+  opacity: .75;
+}
+
+.guide code, 
+.guide .code-block {
+  border: .1rem solid var(--color-faded-2);
+  border-radius: .25rem;
+  background-color: var(--color-vanilla);
+
+  font-family: "Fira Code", serif;
+  /* font-size: .9rem; */
+}
+.guide code {
+  padding: 0 .2rem;
+}
+
+.guide .code-block code {
+  border: none;
+  border-radius: 0;
+  padding: 0;
+
+  font-family: "Fira Code", serif;
+  background-color: transparent;
+}
+
+.hover-preview {
+  font-family: "Inter", serif;
+  color: black;
+  position: absolute;
+  max-width: 500px;
+  max-height: 500px;
+  overflow: hidden;
+  background: var(--color-background-panel);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  padding: .5rem;
+  border-radius: .5rem;
+  pointer-events: none;
+  z-index: 1000;
+  display: none;
+}
+
+.love-embed {
+  display: block;
+  border-radius: .25rem;
+}
+.love-embed:focus {
+  outline: var(--color-whale) solid .25rem;
+}
+
+/* ---- mobile ---- */
+@media only screen and (max-width: 1000px) {
+  html {
+    overflow: hidden;
+  }
+  html:has( .sidebar.active) {
+    overflow-y: hidden;
+  }
+
+  body {
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    overflow: scroll;
+    padding: 1rem .25rem;
+  }
+
+  .guide-header .menu-button {
+    display: flex;
+  }
+  .guide {
+    /* 
+    Setting the body element's box-sixing to border-box ignores its bottom padding?
+    This gives it a little space to breathe.
+    */
+    padding-bottom: 1rem;
+  }
+
+  .sidebar {
+    box-sizing: border-box;
+    position: absolute;
+    width: 20rem;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 3rem 1rem;
+    left: -25rem;
+    top: 0;
+    border-right: .1rem solid var(--color-faded-1);
+    
+    background-color: var(--color-background-panel);
+    transition: left .1s;
+  }
+  .sidebar.active {
+    left: 0;
+  }
+
+  .guide {
+    opacity: 1;
+    transition: opacity .1s;
+  }
+} 
