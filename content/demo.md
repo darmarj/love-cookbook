@@ -72,5 +72,4 @@ end
 {% endlove %}
 
 ## Abstract
-
 We can add hover abstract text: [local variables](./guides/fundamentals/variables#local-variables) to explain briefly explain concepts from other chapters.
