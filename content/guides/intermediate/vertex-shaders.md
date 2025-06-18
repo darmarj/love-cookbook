@@ -75,6 +75,7 @@ void vertexmain() {
 ## Technical terms
 
 ### Vertex
+
 A vertex is a point in 2D or 3D space, it's the most basic building block of any model.
 They're what's used to create triangles, which are then used to create more complex shapes.
 For example, a rectangle has 4 vertices, one on each corner forming two triangles.
@@ -103,6 +104,7 @@ and `unorm` means it's normalized to the range of [0, 1].
 `8` means it's an 8-bit value, so it can be between 0 and 255. So, putting it all together, this is a `vec4` with values between 0 and 1.
 
 ### Matrices
+
 Matrices are a way to store a 2D array of values, like a 4x4 array of floats.
 Matrices are very useful for transforming coordinates, like rotating, scaling and translating.      
 Usually starting from the identity matrix, which looks like:
@@ -114,11 +116,14 @@ Usually starting from the identity matrix, which looks like:
 ```
 
 ### Projection-Matrix
+
 The projection matrix is a [4x4 matrix](#Matrices) which brings the 3D world to a 2D screen, more specifically, transforms a 3D point in view space to a 2D point in [NDC space](#NDC-space).
 
 ### NDC-space
+
 Normalized Device Coordinates, a vec3 ranging from [-1, 1] on the x, y and z axis.      
 vec3(-1) is the top left corner of the screen, vec3(1) is the bottom right corner of the screen.
 
 ### Orthographic
+
 An orthographic projection is a way to project 3D objects to a 2D screen, without any perspective, meaning things don't get smaller the further away they are, as opposed to a perspective projection.

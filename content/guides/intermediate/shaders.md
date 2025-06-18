@@ -107,6 +107,7 @@ int z = int(x) + y; // z = 3, because x = 1.5 -> int = 1
 
 
 ### Conditionals
+
 ```lua
 if x > y then
     return x
@@ -137,6 +138,7 @@ else
 ```
 
 ### Loops
+
 ```lua
 local sum = 0
 
@@ -155,6 +157,7 @@ for (int i = 0; i < 11; i++)
 ```
 
 ### Functions
+
 ```lua
 function add(x, y)
     return x + y
@@ -169,6 +172,7 @@ float add(float x, float y)
 ```
 
 ### Arrays
+
 ```lua
 local array = { 1, 2, 3 }
 ```
@@ -178,6 +182,7 @@ int array[3] = { 1, 2, 3 };
 ```
 
 ### Structs
+
 ```lua
 local myData = { 
     x = 1, 
@@ -458,6 +463,7 @@ Type suffixes
 [This](https://learnwebgl.brown37.net/12_shader_language/glsl_mathematical_operations.html) page explains operators.
 
 ## Object Management
+
 You can think of `Textures` and `Buffers` like tables, like tables, they have a reference to the actual data, but they're not the data itself.
 
 Meaning if you change the data in the table, the data will change as well.
@@ -484,6 +490,7 @@ These are also useful but might not be as relevant when creating normal effects.
 ## Technical terms
 
 ### UV-coordinates
+
 UV-coordinates are a way to map a 2D texture to an object of any shape, 2D and 3D alike.
 The U and V stand for the horizontal and vertical axis, respectively.
 When present, each vertex stores the coordinates on the texture where it should be drawn,
@@ -492,6 +499,7 @@ usually ranging from [0, 1] but can be outside of that range.
 > [!WARNING] These are quite in-depth terms and you probably won't need to know much about them when creating shaders.
 
 ### Registers
+
 Registers are a way to store data on the GPU, like variables in lua, each "register" can old a 32-bit value, like a float or an int. There are two types of registers on the gpu,       
 Vector and Scalar registers, the name is very misleading, you'd expect that a vector register can hold multiple values and scalar only one, but it has nothing to do with the data type.        
 Rather it's about how the data is used.     
@@ -501,7 +509,9 @@ A vector register can store a single variable which varies per thread, like the 
 A scalar register can store a single variable which is the same for all threads, like a uniform value. They're also usually allocated in batches of 256, so you have a lot of them to work with.
 
 ### VRAM
+
 Vram is just the memory on your GPU, where all the textures, buffers and shaders are stored. It's a lot faster than normal RAM, but usually a lot smaller.
 
 ### Thread
+
 A thread is a single unit of execution, like a single pixel on the screen, a vertex to transform or instance of a [compute shader](compute-shaders).

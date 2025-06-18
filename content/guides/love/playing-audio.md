@@ -5,6 +5,7 @@ date: 2025-03-04
 ---
 
 Playing audio is done with:
+
 ```lua
 love.audio.play(source)
 ```
@@ -12,6 +13,7 @@ love.audio.play(source)
 `source` is an object of type `Source` which represents audio which we can play.
 
 To create a `Source` we:
+
 ```lua
 local sound = love.audio.newSource(filename, sourceType)
 ```
@@ -25,6 +27,7 @@ local sound = love.audio.newSource(filename, sourceType)
 
 
 Altogether to play audio we:
+
 ```lua
 local source = love.audio.newSource(filename, sourceType)
 love.audio.play(source)
@@ -32,6 +35,7 @@ love.audio.play(source)
 
 
 For example:
+
 ```lua
 local sfx = love.audio.newSource("assets/chirp.ogg", "static")
 local music = love.audio.newSource("assets/bach.ogg", "stream")
@@ -43,16 +47,19 @@ love.audio.play(music)
 Of course, we can do more than just play audio with love.audio and sources.
 
 We can pause it with:
+
 ```lua
 love.audio.pause(source)
 ```
 
 And we can stop and rewind it to the beginning with:
+
 ```lua
 love.audio.stop(source)
 ```
 
 We can also set the master volume with:
+
 ```lua
 love.audio.setVolume(volume)
 ```
@@ -62,6 +69,7 @@ It's important to note that we can not set the volume of a specified
 source with `love.audio.setVolume`. But, as `Source` is an object, it has methods that invoked in much the same way as ``love.audio``.
 
 For instance:
+
 ```lua
 source:play()
 source:pause()
@@ -69,11 +77,13 @@ source:stop()
 ```
 
 So to set the volume of a specified source without affecting master volume.
+
 ```lua
 source:setVolume(volume)
 ```
 
 Finally, should we want to make a source repeatedly restart and replay when it reaches the end of the audio we:
+
 ```lua
 source:setLooping(true)
 ```

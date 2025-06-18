@@ -7,9 +7,11 @@ date: 2025-02-24
 LÖVE comes equipped with a variety of shape drawing functions and in this tutorial we're going to go through them.
 
 ## Rectangles
+
 Drawing rectangles is straightforward: we provide the x and y position of the top-left corner and a width and height. We also instruct whether we want the rectangle to be filled or just an outline.
 
 This is the simplest rectangle we can draw with the {% api "love.graphics.rectangle" %} function:
+
 ```lua
 function love.draw()
     love.graphics.rectangle("fill", 50, 50, 100, 50)
@@ -32,6 +34,7 @@ end
 {% endlove %}
 
 Let's draw some more rectangles: some filled and some with just outlines:
+
 ```lua 3,6,9,12
 function love.draw()
     love.graphics.setColor(0.29, 0.56, 0.58)
@@ -72,6 +75,7 @@ Did you notice the 2 rounded rectangles? That's because there are actually extra
 Here we provided 16 for the x and 8 for the y so the corners are skewed horizontally.
 
 ## Circles
+
 Drawing circles is even easier - we use {% api "love.graphics.circle" %} in a very similar way to `love.graphics.rectangle`:
 
 ```lua 3,6,9,12
@@ -116,6 +120,7 @@ end
 {% endlove %}
 
 ## Lines
+
 As you might expect lines are drawn with {% api "love.graphics.line" %}:
 
 It takes a set of 4 parameters:
@@ -158,6 +163,7 @@ end
 {% endlove %}
 
 ## Points
+
 Singular points are drawn with {% api "love.graphics.points" %} and has essentially the same parameters as `love.graphics.line`:
 
 ```lua
@@ -198,6 +204,7 @@ end
 {% endlove %}
 
 ## Polygons
+
 Like with points and lines we provide a set of positions for the polygon to draw with but we have a `Draw Mode` parameter to pass first (like with [rectangles](#rectangles) and [circles](#circles)).
 
 > [!WARNING]
@@ -246,6 +253,7 @@ end
 {% endlove %}
 
 ## Ellipse
+
 Ellipses are like circles but with 2 radius parameters. One for the horizontal radius and one for the vertical:
 * DrawMode - "line" or "fill"; self-explanatory
 * x - the x position of the *center* of the circle.
@@ -289,6 +297,7 @@ end
 {% endlove %}
 
 ## Arcs
+
 We can draw arcs with {% api "love.graphics.arc" %}. There are variants of this function, one specifying the {% api "ArcType" %} and one without (defaulting to `pie`).
 
 * DrawMode - "line" or "fill"
@@ -352,7 +361,9 @@ end
 {% endlove %}
 
 ## Bonus
+
 ### Line styles
+
 For shapes in line mode we have control over how thick those lines are rendered using the function {% api "love.graphics.setLineWidth" %}:
 
 ```lua 4
@@ -429,6 +440,7 @@ end
 {% endlove %}
 
 ### Flower
+
 Just for fun let's combine a lot of these to make a simple scene:
 
 ```lua 9-16,28-32,49,53,60,64

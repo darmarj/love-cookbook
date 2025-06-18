@@ -26,4 +26,4 @@ heres how you do things
 * Write your cool new page
 
 ## Features
-See the [demo page](https://diminim.github.io/love-cookbook/demo) for a reference on how to use various embed features.
+See the [demo page](https://darmarj.github.io/love-cookbook/demo) for a reference on how to use various embed features.

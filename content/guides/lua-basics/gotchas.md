@@ -11,6 +11,7 @@ These are some of the more common ones worth remembering.
 
 
 ## Arrays Start At 1
+
 In Lua, all arrays start at 1, rather than the standard convention in most languages to start at 0.  
 This means to access the first item in a list, you need to specify `array[1]` not `array[0]`:
 
@@ -24,6 +25,7 @@ print('The first item is not:', mascots[0])
 ```
 
 ## Not Equals To
+
 In a lot of languages, 'not equals to' is represented by `!=`.  
 However in Lua, that would be invalid syntax, and instead you need to use `~=`
 
@@ -38,6 +40,7 @@ end
 ```
 
 ## String Concatenation
+
 In lots of languages, combining two strings together is as simple as using the `+` symbol.  
 However, Lua and will scold you for attempting to 'add' two strings together, as `+` is seen as a purely mathmatical operation.
 
@@ -64,6 +67,7 @@ print(result) -- will print 'Fahrenheit 451'
 Keep this in mind if you accidentally use the concatenation operator with 2 numbers, as `1+1` will give `2`, but `1..1` will give `'11'`.
 
 ## Operator Assignments
+
 In many languages, operator assignments allow you to do shorthands for modifying or iterating on a variable.  
 In Lua, these operators, such as `+=`, `*=` and `++`, do not exist.
 
@@ -78,6 +82,7 @@ end
 ```
 
 ## Global Variables
+
 In some languages, defining globals is explicit - like in C where you might write `global thing`.  
 In Lua, unless you use `local` your variable will be global by default!
 
@@ -97,6 +102,7 @@ print(_G['mascot']) -- will be nil
 ```
 
 ## Truthy/Falsey
+
 Different languages have different opinions on what is a "truthy" value and what is a "falsey" value - i.e. values that will return `true` or `false`.
 
 In Lua, only `false` and `nil` are considered "falsey" - everything else is considered true!
@@ -116,8 +122,10 @@ if zero then print('0 is true') end -- will print, 0 is true!
 ```
 
 ## Multiple Returns
+
 In Lua, functions can return multiple values!  
 You can access the returned variables using a list of variables assignment:
+
 ```lua
 local function doThing()
   return 'whale', 'duckloon'
@@ -132,6 +140,7 @@ print(result[1]) -- will print 'whale'
 ```
 
 If you only need the first variable from a function that returns multiple values, you can do a few options:
+
 ```lua
 local function doThing()
   return 'whale', 'duckloon'
@@ -146,6 +155,7 @@ print(b, c) -- will print 'whale' and nil
 ```
 
 It's also worth noting that using a function that returns multiple variables as an argument to another function can have some unintended results:
+
 ```lua
 local function rollDice()
   return 6, 6

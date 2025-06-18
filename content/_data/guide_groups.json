@@ -54,7 +54,6 @@
     {
         "name": "Basics",
         "guide_urls": [
-            "/guides/basic/aabb/",
             "/guides/basic/angle-and-distance/",
             "/guides/basic/tiles/",
             "/guides/basic/animation/",

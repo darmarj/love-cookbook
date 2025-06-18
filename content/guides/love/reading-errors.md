@@ -21,6 +21,7 @@ Running the above code will present you with a nice error message that looks lik
 ![](/assets/img/reading-errors/error.png)
 
 ## Error message breakdown
+
 Let's quickly break down what this means before your eyes glaze over and you close the window without reading it - a common beginner pitfall.
 
 The most important part is at the very beginning of the second line. `main.lua:2` means that the error was thrown in the file `main.lua` on line 2. This is always a good place to start and will usually be where you will have to correct your code in order to resolve the issue. The rest of the line is telling us what the error actually was.
@@ -32,7 +33,9 @@ The most important part is at the very beginning of the second line. `main.lua:2
 In this case we know the issue is that we're attempting to multiply the number 100 by a string ("test") on line 2 which makes absolutely no sense and LÖVE is right to complain.
 
 ## Less obvious errors
+
 This code will throw a different kind of error:
+
 ```lua
 local image = love.graphics.newImage("assets/whale.png")
 
@@ -48,6 +51,7 @@ Here the error is on line 4. Bad argument #1 to 'draw' is referring to the first
 A close look at the `picture` variable we're passing through makes it clear that we didn't actually define it anywhere. Instead we meant to pass the `image` variable!
 
 ```lua 4
+
 local image = love.graphics.newImage("assets/whale.png")
 
 function love.draw()
@@ -68,6 +72,7 @@ end
 Hopefully you can see how even in a much bigger file or project you can quickly track down the source of an error and solve it.
 
 ## Traceback
+
 What if the line the error message points you to isn't helpful? In the code below we're intentionally throwing an error on line 5 with an `assert` if a passed parameter is nil and that's indeed the line our error message is pointing to.
 
 ```lua
