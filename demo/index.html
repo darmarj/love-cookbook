@@ -97,8 +97,7 @@
                   </li><li><a class="" href="/love-cookbook/guides/love/reading-errors/">Reading errors</a>
                   </li></ul>
 
-            </li><li class="group-header">Basics<ul class="guides"><li><a class="" href="/love-cookbook/guides/basic/aabb/">AABB</a>
-                  </li><li><a class="" href="/love-cookbook/guides/basic/angle-and-distance/">Angle &amp; distance</a>
+            </li><li class="group-header">Basics<ul class="guides"><li><a class="" href="/love-cookbook/guides/basic/angle-and-distance/">Angle &amp; distance</a>
                   </li><li><a class="" href="/love-cookbook/guides/basic/tiles/">Tiles</a>
                   </li><li><a class="" href="/love-cookbook/guides/basic/animation/">Animation</a>
                   </li><li><a class="" href="/love-cookbook/guides/basic/saving-and-loading/">Saving &amp; loading</a>
@@ -174,11 +173,11 @@
 </code></pre>
 <h2 id="embedded-love" tabindex="-1">Embedded LOVE <a class="anchor" href="#embedded-love">#</a></h2>
 <p>We can embed LOVE windows with the <code>{% love %}</code> shortcode.</p>
-<iframe class="love-embed" id="love-iframe-189" src="/love-cookbook/assets/love/love-js" width="300" height="150"></iframe>
+<iframe class="love-embed" id="love-iframe-256" src="/love-cookbook/assets/love/love-js" width="300" height="150"></iframe>
 <script>
-const iframe_189 = document.getElementById('love-iframe-189');
-iframe_189.addEventListener('load', function() {
-iframe_189.contentWindow.postMessage({lua: `love.window.setMode(300, 150) 
+const iframe_256 = document.getElementById('love-iframe-256');
+iframe_256.addEventListener('load', function() {
+iframe_256.contentWindow.postMessage({lua: `love.window.setMode(300, 150) 
 function love.draw()
  love.graphics.printf("this is how we embed love.js", 0, 50, love.graphics.getWidth(), "center")
 end
@@ -186,7 +185,7 @@ end
 });
 </script>
 <h2 id="abstract" tabindex="-1">Abstract <a class="anchor" href="#abstract">#</a></h2>
-<p>We can add hover abstract text: <a href="../guides/fundamentals/variables#local-variables" data-preview=".././guides/fundamentals/variables#local-variables">local variables</a> to explain briefly explain concepts from other chapters.</p>
+<p>We can add hover abstract text: <a href="../guides/lua-basics/variables#local-variables" data-preview=".././guides/lua-basics/variables#local-variables">local variables</a> to explain briefly explain concepts from other chapters.</p>
 
 
 <footer class="guide-footer">

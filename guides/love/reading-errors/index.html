@@ -97,8 +97,7 @@
                   </li><li><a class="active" href="/love-cookbook/guides/love/reading-errors/">Reading errors</a>
                   </li></ul>
 
-            </li><li class="group-header">Basics<ul class="guides"><li><a class="" href="/love-cookbook/guides/basic/aabb/">AABB</a>
-                  </li><li><a class="" href="/love-cookbook/guides/basic/angle-and-distance/">Angle &amp; distance</a>
+            </li><li class="group-header">Basics<ul class="guides"><li><a class="" href="/love-cookbook/guides/basic/angle-and-distance/">Angle &amp; distance</a>
                   </li><li><a class="" href="/love-cookbook/guides/basic/tiles/">Tiles</a>
                   </li><li><a class="" href="/love-cookbook/guides/basic/animation/">Animation</a>
                   </li><li><a class="" href="/love-cookbook/guides/basic/saving-and-loading/">Saving &amp; loading</a>
@@ -168,18 +167,19 @@
 <p><img src="/love-cookbook/assets/img/reading-errors/error_drawable_expected.png" alt=""></p>
 <p>Here the error is on line 4. Bad argument #1 to 'draw' is referring to the first argument (<code>picture</code>) in the <a href="https://love2d.org/wiki/love.graphics.draw" target="_blank"><code>love.graphics.draw</code></a> call. LÖVE is saying it was expecting a <a href="https://love2d.org/wiki/Drawable" target="_blank"><code>Drawable</code></a> as the first argument but we gave it <code>nil</code> (or nothing). Of course in this case we did give it <em>something</em> so why are we getting this error?</p>
 <p>A close look at the <code>picture</code> variable we're passing through makes it clear that we didn't actually define it anywhere. Instead we meant to pass the <code>image</code> variable!</p>
-<pre><code class="language-lua"><span data-attrs="4"></span><span class="token keyword">local</span> image <span class="token operator">=</span> love<span class="token punctuation">.</span>graphics<span class="token punctuation">.</span><span class="token function">newImage</span><span class="token punctuation">(</span><span class="token string">"assets/whale.png"</span><span class="token punctuation">)</span>
+<pre><code class="language-lua"><span data-attrs="4"></span>
+<span class="token keyword">local</span> image <span class="token operator">=</span> love<span class="token punctuation">.</span>graphics<span class="token punctuation">.</span><span class="token function">newImage</span><span class="token punctuation">(</span><span class="token string">"assets/whale.png"</span><span class="token punctuation">)</span>
 
 <span class="token keyword">function</span> love<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     love<span class="token punctuation">.</span>graphics<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span>image<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
 <span class="token keyword">end</span>
 </code></pre>
 <p>Changing that line to instead pass through <code>image</code> and rerunning the code shows us a lovely picture of a whale instead of an error.</p>
-<iframe class="love-embed" id="love-iframe-143" src="/love-cookbook/assets/love/love-js" width="800" height="600"></iframe>
+<iframe class="love-embed" id="love-iframe-341" src="/love-cookbook/assets/love/love-js" width="800" height="600"></iframe>
 <script>
-const iframe_143 = document.getElementById('love-iframe-143');
-iframe_143.addEventListener('load', function() {
-iframe_143.contentWindow.postMessage({lua: `love.window.setMode(800, 600) 
+const iframe_341 = document.getElementById('love-iframe-341');
+iframe_341.addEventListener('load', function() {
+iframe_341.contentWindow.postMessage({lua: `love.window.setMode(800, 600) 
 local image = love.graphics.newImage("assets/whale.png")
 function love.draw()
  love.graphics.draw(image, 100, 100)
@@ -228,11 +228,11 @@ end
 <li><code>main.lua:18: in function 'load'</code> - aha!</li>
 </ul>
 <p>Our <code>make_whale</code> function was called from line 18 in main.lua's load function and that call was the one that directly led to the error being thrown. Looking back at our code we can see that line 18 looks a little different from the others with a typo: <code>make_whale(imaeg)</code> should be <code>make_whale(image)</code>!</p>
-<iframe class="love-embed" id="love-iframe-441" src="/love-cookbook/assets/love/love-js" width="800" height="600"></iframe>
+<iframe class="love-embed" id="love-iframe-128" src="/love-cookbook/assets/love/love-js" width="800" height="600"></iframe>
 <script>
-const iframe_441 = document.getElementById('love-iframe-441');
-iframe_441.addEventListener('load', function() {
-iframe_441.contentWindow.postMessage({lua: `love.window.setMode(800, 600) 
+const iframe_128 = document.getElementById('love-iframe-128');
+iframe_128.addEventListener('load', function() {
+iframe_128.contentWindow.postMessage({lua: `love.window.setMode(800, 600) 
 local image = love.graphics.newImage("assets/whale.png")
 local whales = {}
 local function make_whale(sprite)
