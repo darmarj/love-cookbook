@@ -12,23 +12,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lua</title>
 <meta name="title" content="Lua">
-<meta name="author" content="">
-<meta name="description" content="Lua is the programming language that LÖVE uses.">
+<meta name="author" content="ellraiser">
+<meta name="description" content="Lua is the programming language that LÖVE uses! Lua (pronounded 'LOO-ah') means &quot;Moon&quot; in Portuguese, and was created back in 1993 by a team at PUC-Rio as a language that could extend various software applications.">
 <meta name="generator" content="eleventy">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://darmarj.github.io/love-cookbook//guides/lua-basics/lua/">
+<meta property="og:url" content="https://diminim.github.io/love-cookbook/guides/lua-basics/lua/">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="Lua">
-<meta property="og:description" content="Lua is the programming language that LÖVE uses.">
-<meta property="og:image" content="https://darmarj.github.io/love-cookbook/assets/logo.png">
+<meta property="og:description" content="Lua is the programming language that LÖVE uses! Lua (pronounded 'LOO-ah') means &quot;Moon&quot; in Portuguese, and was created back in 1993 by a team at PUC-Rio as a language that could extend various software applications.">
+<meta property="og:image" content="https://diminim.github.io/love-cookbook/assets/logo.png">
 <meta property="og:image:alt" content="LÖVE Cookbook">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:url" content="https://darmarj.github.io/love-cookbook//guides/lua-basics/lua/">
+<meta name="twitter:url" content="https://diminim.github.io/love-cookbook/guides/lua-basics/lua/">
 <meta name="twitter:title" content="Lua">
-<meta name="twitter:description" content="Lua is the programming language that LÖVE uses.">
-<meta name="twitter:image" content="https://darmarj.github.io/love-cookbook/assets/logo.png">
+<meta name="twitter:description" content="Lua is the programming language that LÖVE uses! Lua (pronounded 'LOO-ah') means &quot;Moon&quot; in Portuguese, and was created back in 1993 by a team at PUC-Rio as a language that could extend various software applications.">
+<meta name="twitter:image" content="https://diminim.github.io/love-cookbook/assets/logo.png">
 <meta name="twitter:image:alt" content="LÖVE Cookbook">
-<link rel="canonical" href="https://darmarj.github.io/love-cookbook//guides/lua-basics/lua/">
+<link rel="canonical" href="https://diminim.github.io/love-cookbook/guides/lua-basics/lua/">
 
     <script src="/love-cookbook/assets/js/codeblock.js"></script>
     <script src="/love-cookbook/assets/js/hover_preview.js"></script>
@@ -60,11 +60,8 @@
       </header>
 
       <nav class="table-of-contents">
-        <ul class="chapters"><li class="group-header"><ul class="guides"><li><a class="" href="/love-cookbook/guides/getting-started/">Getting started</a>
-                  </li><li><a class="" href="/love-cookbook/guides/fiddle/">Fiddle</a>
-                  </li></ul>
-
-            </li><li class="group-header">Installation<ul class="guides"><li><a class="" href="/love-cookbook/guides/installation/love/">LÖVE</a>
+        <ul class="chapters"><li class="group-header">Installation<ul class="guides"><li><a class="" href="/love-cookbook/guides/installation/getting-started/">Getting started</a>
+                  </li><li><a class="" href="/love-cookbook/guides/installation/love/">LÖVE</a>
                   </li><li><a class="" href="/love-cookbook/guides/installation/vscode/">VSCode</a>
                   </li><li><a class="" href="/love-cookbook/guides/installation/neovim/">Neovim</a>
                   </li></ul>
@@ -78,18 +75,20 @@
                   </li><li><a class="" href="/love-cookbook/guides/lua-basics/recap/">Recap</a>
                   </li></ul>
 
-            </li><li class="group-header">Lua Intermediate<ul class="guides"><li><a class="" href="/love-cookbook/guides/lua-intermediate/require/">Require</a>
-                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/scope/">Scope</a>
-                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/modulo/">Modulo</a>
-                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/nested-for-loops/">Nested for-loops</a>
-                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/standard-library/">Standard library</a>
-                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/string-patterns/">String patterns</a>
-                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/ternary-operators/">Ternary operators</a>
-                  </li><li><a class="" href="/love-cookbook/guides/lua-intermediate/metatables/">Metatables</a>
+            </li><li class="group-header">Lua Advanced<ul class="guides"><li><a class="" href="/love-cookbook/guides/lua-advanced/require/">Require</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-advanced/scope/">Scope</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-advanced/modulo/">Modulo</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-advanced/nested-for-loops/">Nested for-loops</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-advanced/standard-library/">Standard library</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-advanced/string-patterns/">String patterns</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-advanced/ternary-operators/">Ternary operators</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-advanced/metatables/">Metatables</a>
+                  </li><li><a class="" href="/love-cookbook/guides/lua-advanced/coroutines/">Coroutines</a>
                   </li></ul>
 
-            </li><li class="group-header">LÖVE Basics<ul class="guides"><li><a class="" href="/love-cookbook/guides/love/drawing-image/">Drawing an image</a>
+            </li><li class="group-header">LÖVE Introduction<ul class="guides"><li><a class="" href="/love-cookbook/guides/love/drawing-image/">Drawing an image</a>
                   </li><li><a class="" href="/love-cookbook/guides/love/drawing-shapes/">Drawing shapes</a>
+                  </li><li><a class="" href="/love-cookbook/guides/love/drawing-text/">Drawing text</a>
                   </li><li><a class="" href="/love-cookbook/guides/love/playing-audio/">Playing audio</a>
                   </li><li><a class="" href="/love-cookbook/guides/love/input/">Input</a>
                   </li><li><a class="" href="/love-cookbook/guides/love/filesystem/">Filesystem</a>
@@ -97,7 +96,8 @@
                   </li><li><a class="" href="/love-cookbook/guides/love/reading-errors/">Reading errors</a>
                   </li></ul>
 
-            </li><li class="group-header">Basics<ul class="guides"><li><a class="" href="/love-cookbook/guides/basic/angle-and-distance/">Angle &amp; distance</a>
+            </li><li class="group-header">Basic Concepts<ul class="guides"><li><a class="" href="/love-cookbook/guides/basic/aabb/">AABB</a>
+                  </li><li><a class="" href="/love-cookbook/guides/basic/angle-and-distance/">Angle &amp; distance</a>
                   </li><li><a class="" href="/love-cookbook/guides/basic/tiles/">Tiles</a>
                   </li><li><a class="" href="/love-cookbook/guides/basic/animation/">Animation</a>
                   </li><li><a class="" href="/love-cookbook/guides/basic/saving-and-loading/">Saving &amp; loading</a>
@@ -105,21 +105,30 @@
                   </li><li><a class="" href="/love-cookbook/guides/basic/stencil-modes/">Stencil modes</a>
                   </li></ul>
 
-            </li><li class="group-header">Intermediate<ul class="guides"><li><a class="" href="/love-cookbook/guides/intermediate/oop/">OOP</a>
-                  </li><li><a class="" href="/love-cookbook/guides/intermediate/collision-resolving/">Collision resolution</a>
-                  </li><li><a class="" href="/love-cookbook/guides/intermediate/stencil-states/">Stencil states</a>
-                  </li><li><a class="" href="/love-cookbook/guides/intermediate/coroutines/">Coroutines</a>
-                  </li><li><a class="" href="/love-cookbook/guides/intermediate/shaders/">Shaders</a>
-                  </li><li><a class="" href="/love-cookbook/guides/intermediate/compute-shaders/">Compute Shaders</a>
-                  </li><li><a class="" href="/love-cookbook/guides/intermediate/box-blur/">Box Blur</a>
-                  </li><li><a class="" href="/love-cookbook/guides/intermediate/outlines/">Outlines</a>
-                  </li><li><a class="" href="/love-cookbook/guides/intermediate/palette/">Palette</a>
-                  </li><li><a class="" href="/love-cookbook/guides/intermediate/pixelation/">Pixelation</a>
-                  </li><li><a class="" href="/love-cookbook/guides/intermediate/vertex-shaders/">Vertex Shaders</a>
+            </li><li class="group-header">Advanced Concepts<ul class="guides"><li><a class="" href="/love-cookbook/guides/advanced/oop/">OOP</a>
+                  </li><li><a class="" href="/love-cookbook/guides/advanced/collision-resolving/">Collision resolution</a>
+                  </li><li><a class="" href="/love-cookbook/guides/advanced/stencil-states/">Stencil states</a>
+                  </li><li><a class="" href="/love-cookbook/guides/advanced/physics/">Physics</a>
+                  </li><li><a class="" href="/love-cookbook/guides/advanced/threads/">Threads</a>
                   </li></ul>
 
-            </li><li class="group-header">Advanced<ul class="guides"><li><a class="" href="/love-cookbook/guides/advanced/physics/">Physics</a>
-                  </li><li><a class="" href="/love-cookbook/guides/advanced/threads/">Threads</a>
+            </li><li class="group-header">Shaders<ul class="guides"><li><a class="" href="/love-cookbook/guides/shaders/introduction/">Shaders</a>
+                  </li><li><a class="" href="/love-cookbook/guides/shaders/compute-shaders/">Compute Shaders</a>
+                  </li><li><a class="" href="/love-cookbook/guides/shaders/box-blur/">Box Blur</a>
+                  </li><li><a class="" href="/love-cookbook/guides/shaders/outlines/">Outlines</a>
+                  </li><li><a class="" href="/love-cookbook/guides/shaders/palette/">Palette</a>
+                  </li><li><a class="" href="/love-cookbook/guides/shaders/pixelation/">Pixelation</a>
+                  </li><li><a class="" href="/love-cookbook/guides/shaders/vertex-shaders/">Vertex Shaders</a>
+                  </li></ul>
+
+            </li><li class="group-header">Exporting<ul class="guides"><li><a class="" href="/love-cookbook/guides/exporting/distribution/">Distribution</a>
+                  </li><li><a class="" href="/love-cookbook/guides/exporting/web-export/">Web Export</a>
+                  </li><li><a class="" href="/love-cookbook/guides/exporting/build-tools/">Build Tools</a>
+                  </li></ul>
+
+            </li><li class="group-header">Recipes<ul class="guides"><li><a class="" href="/love-cookbook/guides/recipes/screen-resizing/">Screen resizing</a>
+                  </li><li><a class="" href="/love-cookbook/guides/recipes/steam/">Steam</a>
+                  </li><li><a class="" href="/love-cookbook/guides/recipes/modding/">Modding</a>
                   </li></ul>
 
             </li></ul>
@@ -138,9 +147,48 @@
   <h1 class="title">Lua</h1>
 </header>
 
-<p>Lua is the <strong>programming language</strong> that LÖVE uses.</p>
+<p>Lua is the programming language that LÖVE uses! Lua (pronounded 'LOO-ah') means &quot;Moon&quot; in Portuguese, and was created back in 1993 by a team at <a href="https://www.puc-rio.br/english/">PUC-Rio</a> as a language that could extend various software applications.</p>
+<p>The idea was to create a language that gave all the basic functionality needed but not get too complicated or domain-specific, instead allowing developers to extend and customise as needed.</p>
 <div class="markdown-alert markdown-alert-important"><p class="markdown-alert-title"><svg class="octicon octicon-report mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p><p>Lua is a name, <ins>not</ins> an abbreviation. Writing it as <em>LUA</em> is therefore <ins>wrong</ins>.</p>
 </div>
+<p>A small piece of example code in Lua:</p>
+<pre><code class="language-lua"><span data-attrs=""></span><span class="token comment">-- a comment!</span>
+
+<span class="token keyword">local</span> data <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name <span class="token operator">=</span> <span class="token string">"Toast"</span><span class="token punctuation">,</span>
+  counter <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  data<span class="token punctuation">.</span>counter <span class="token operator">=</span> data<span class="token punctuation">.</span>counter <span class="token operator">+</span> <span class="token number">1</span>
+<span class="token keyword">end</span>
+
+<span class="token keyword">for</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">100</span> <span class="token keyword">do</span>
+  <span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'Done!'</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>counter<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="learning-lua" tabindex="-1">Learning Lua <a class="anchor" href="#learning-lua">#</a></h2>
+<p>To get started with LÖVE, it's recommended to have some basic understanding of Lua first. Here are some resources that can help get you started:</p>
+<p><strong>LÖVE Cookbook</strong><br>
+You're already reading it! This Lua Basics section has a bunch of sections that will take you through the syntax, variables, functions, datatypes and general gotchas.<br>
+<a href="https://diminim.github.io/love-cookbook/guides/lua-basics/variables/">https://diminim.github.io/love-cookbook/guides/lua-basics/variables/</a></p>
+<p><strong>Sheepolution's &quot;How To LÖVE&quot;</strong><br>
+This is a general guide to using LÖVE, but starts by introducing the concepts of Lua first.<br>
+<a href="https://sheepolution.com/learn/book/contents">https://sheepolution.com/learn/book/contents</a></p>
+<p><strong>Programming In Lua</strong><br>
+This is the official programming guide for Lua, by the creators themselves. It can be a bit heavy in some places, but does showcase everything Lua has to offer (which can be overkill for what you need).<br>
+<a href="https://www.lua.org/pil/1.html">https://www.lua.org/pil/1.html</a></p>
+<p><strong>Learn X in Y minutes</strong><br>
+A 'cheatsheet' type guide showcasing the main syntax and features of Lua and explaining how it works, useful once you've already started using Lua as a quick reference to things.
+<a href="https://learnxinyminutes.com/lua/">https://learnxinyminutes.com/lua/</a></p>
+<p><strong>Lua Reference Manual</strong><br>
+This is the manual for the programming language, and so covers all the syntax and functions available. It's a long read, and while it would probably benefit you to read through it all one day, for now it is better to use as a lookup when you want to learn more about something specific, like functions or metatables.<br>
+<a href="https://www.lua.org/manual/5.0/">https://www.lua.org/manual/5.0/</a></p>
+<h2 id="luajit" tabindex="-1">LuaJIT <a class="anchor" href="#luajit">#</a></h2>
+<p>LÖVE uses a version of Lua called <a href="https://luajit.org/">LuaJIT</a>, a 'Just-In-Time' compiler that converts the your written Lua code into machine code at runtime. This allows the code to be executed extremely fast (and Lua is very fast to begin with!).</p>
+<p>LuaJIT uses Lua version 5.1, but does implement a couple of 5.2 features, as such keep in mind the Lua version when looking up documentation as there are newer Lua versions and features not available in LuaJIT.</p>
 
 
 <footer class="guide-footer">
@@ -148,6 +196,8 @@
 
   <p>By:
   
+      <em>ellraiser</em>
+    
   </p>
 </footer>
       </article>
